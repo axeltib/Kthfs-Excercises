@@ -1,4 +1,3 @@
-import matplotlib
 from matplotlib.animation import FuncAnimation
 import matplotlib.pyplot as plt
 from matplotlib.widgets import Slider, Button
