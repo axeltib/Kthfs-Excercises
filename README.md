@@ -10,6 +10,28 @@ sudo apt-get install python-rospy
 
 Here two nodes were to be created, where one published to the topic 'tibbling', and the other listened to 'tibbling', and bouced a value, depending on the value from 'tibbling', to '/kthfs/result'.
 
+Node a and b are both modifications of ROS.org's simple subscriber and publisher(guide)[http://wiki.ros.org/ROS/Tutorials/WritingPublisherSubscriber%28python%29].
+
+To run, you first have to run the roscore, which is done by running the command:
+
+```
+roscore
+```
+
+Then, to launch the nodes, you run the command (the same command is used to launch both nodes, but change "nodename" with a respectively b ) below for each node, in two instances:
+
+```
+rosrun package2 node_"nodename".py
+```
+
+To then see what is published to the topics in another instance, type the command
+
+```
+rostopic echo "name_of_topic"
+```
+
+or you can launch PlotJuggler or rqt_plot to get a graphical represantation. 
+
 
 ## Excersise 2
 

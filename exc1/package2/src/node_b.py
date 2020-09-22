@@ -12,7 +12,7 @@ def callback(data):
     """Gets called when reading data from "tibbling", "bounces" modified data to
     "kthfs/result". """
     rospy.loginfo(rospy.get_caller_id() + "I heard %s", data.data)
-    out_data = data.data/q   #Data to be sent to the topic "/kthfs/result"
+    out_data = data.data / q   #Data to be sent to the topic "/kthfs/result"
     pub.publish(out_data)    #Publishinglogging for debugging
     rospy.loginfo(out_data)  #logging for debugging, optional
 
