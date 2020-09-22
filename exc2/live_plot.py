@@ -1,11 +1,10 @@
 import matplotlib
-from matplotlib.animation import FuncAnimation
 import matplotlib.pyplot as plt
-from matplotlib.widgets import Slider, Button
 import time, math
 import numpy as np
 
-class Plotter:
+class LivePlotter:
+    "Used to live plot data. "
     def __init__(self, x_min=0, x_max=10, dx = 0.01,
                        y_min=0, y_max=10, rate = 0.01):
         self.rate = rate
@@ -15,14 +14,14 @@ class Plotter:
         self.line, = self.ax.plot([], [], lw=2)
         self.data = ([], [])    #For exporting uses
 
-    def plot_data(self):
+    def init(self, title = "These curves though"):
         """Plotting data"""
         plt.grid()
-        plt.title("These curves though")
+        plt.title(title)
 
     def update(self, data):
         """Updates the data in the plot and the plot itself. useful for live
-        data tracking. """
+        data tracking. data should be a tuple on the form (x,y)."""
         self.data[0].append(data[0])
         self.data[1].append(data[1])
         plt.plot(data[0], data[1])
@@ -34,10 +33,11 @@ class Plotter:
 
 
 def main():
+    """Test function for the class."""
     plt.ion()
 
-    plot = Plotter(0, 50, rate = 0.1)
-    plot.plot_data()
+    plot = LivePlotter(0, 50, rate = 0.1)
+    plot.init()
     for i in range(200):
         x = 0.1*i
         plot.update((x, math.sin(x)))

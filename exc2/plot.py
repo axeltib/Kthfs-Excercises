@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from matplotlib.widgets import Slider, Button
 import numpy as np
 
-class Plotter:
+class Animator:
     def __init__(self, x_min, x_max, dx = 0.001):
         self.x_array = np.arange(x_min, x_max, dx) #Creating the x axis array
         self.x_lim = (x_min, x_max)
@@ -17,7 +17,7 @@ class Plotter:
         lambd = 5*np.sin(2*np.pi*self.x_array)
         return 3*np.pi*np.exp(-lambd*np.sin(0.01*offset + np.pi/2))
 
-    def plot_func(self, x_label = None, y_label = None):
+    def animate_func(self, x_label = None, y_label = None):
         """Animating the function"""
         anim = FuncAnimation(self.fig, self.animate, init_func = self._init,
                              frames=1000, interval=20, blit=True)
@@ -37,8 +37,8 @@ class Plotter:
         return self.line,
 
 def main():
-    plot = Plotter(0.5, 5)
-    plot.plot_func()
+    plot = Animator(0.5, 5)
+    plot.animate_func()
 
 if __name__ == '__main__':
     main()
