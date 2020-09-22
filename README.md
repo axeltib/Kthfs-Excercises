@@ -1,4 +1,4 @@
-This repo consists of the two excercises given by Kthfs; Kth Formula Student. I am most proficient in python, which is the language I wrote all the scripts and classes in. 
+This repo consists of the two excercises given by Kthfs; Kth Formula Student. I am most proficient in python, which is the language I wrote all the scripts and classes in.
 
 ## Excersise 1
 
@@ -30,4 +30,4 @@ When writing the animation class, I initially copied Jake Vanderplas'[code](http
 
 For the live update, I used [this](https://stackoverflow.com/questions/4098131/how-to-update-a-plot-in-matplotlib), from Stackoverflow, thread as a guide.
 
-I run my programs through the ubuntu terminal, and if you are having trouble getting the plot window to come up, I installed [Xming](https://matplotlib.org/gallery/lines_bars_and_markers/simple_plot.html), which runs a server on your computer that can ubuntu can show windows through.  
+I run my programs through the ubuntu terminal, and had issue getting the plot window to come up. To solve this I installed [Xming](https://matplotlib.org/gallery/lines_bars_and_markers/simple_plot.html), which runs a server on your computer that can ubuntu can show windows through. It worked like a charm and I recommend doing the same thing if you are having the same issue.  
