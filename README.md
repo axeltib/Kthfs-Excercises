@@ -24,6 +24,6 @@ pip install matplotlib
 
 Alternetavely, use pip3 instead of pip.
 
-When writing the animation class, I used matplotlibs website, (https://matplotlib.org/api/animation_api.html "Matplotlib on the animation api"), as a reference.
+When writing the animation class, I used matplotlibs website, [Matplotlib on its animation api](https://matplotlib.org/api/animation_api.html), as a reference.
 
-For the live update, I used (https://stackoverflow.com/questions/4098131/how-to-update-a-plot-in-matplotlib "this") thread as a guide. 
+For the live update, I used [this](https://stackoverflow.com/questions/4098131/how-to-update-a-plot-in-matplotlib) thread as a guide. 
