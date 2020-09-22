@@ -12,7 +12,7 @@ class LivePlotter:
         plt.ylim(y_min)
         self.fig, self.ax = plt.subplots()
         self.line, = self.ax.plot([], [], lw=2)
-        self.data = ([], [])    #For exporting uses
+        self.data = ([], [])    #For eventual exporting uses
 
     def init(self, title = "These curves though"):
         """Plotting data"""
@@ -20,8 +20,8 @@ class LivePlotter:
         plt.title(title)
 
     def update(self, data):
-        """Updates the data in the plot and the plot itself. useful for live
-        data tracking. data should be a tuple on the form (x,y)."""
+        """Updates the data in the plot and the plot itself. Useful for live
+        data tracking. Data should be a tuple on the form (x,y)."""
         self.data[0].append(data[0])
         self.data[1].append(data[1])
         plt.plot(data[0], data[1])
@@ -34,7 +34,7 @@ class LivePlotter:
 
 def main():
     """Test function for the class."""
-    plt.ion()
+    plt.ion()           #Magic method for the plot to work
 
     plot = LivePlotter(0, 50, rate = 0.1)
     plot.init()

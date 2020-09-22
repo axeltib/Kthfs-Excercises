@@ -30,7 +30,7 @@ To then see what is published to the topics in another instance, type the comman
 rostopic echo "name_of_topic"
 ```
 
-or you can launch PlotJuggler or rqt_plot to get a graphical represantation. 
+or you can launch PlotJuggler or rqt_plot to get a graphical represantation.
 
 
 ## Excersise 2
@@ -45,6 +45,8 @@ pip install matplotlib
 ```
 
 Alternetavely, use pip3 instead of pip.
+
+Some overall cleanup could be made in these classes. For instance, when running the live plot, two windows open, where the ladder window is empty.
 
 When writing the one time plot class, I used matplotlib's [example](https://matplotlib.org/gallery/lines_bars_and_markers/simple_plot.html) on simple plots.
 
