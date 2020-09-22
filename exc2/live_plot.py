@@ -2,43 +2,49 @@ import matplotlib
 from matplotlib.animation import FuncAnimation
 import matplotlib.pyplot as plt
 from matplotlib.widgets import Slider, Button
+import time, math
 import numpy as np
 
 class Plotter:
-    def __init__(self, x_min, x_max, dx = 0.001):
-        self.x_array = np.arange(x_min, x_max, dx) #Creating the x axis array
-        self.x_lim = (x_min, x_max)
+    def __init__(self, x_min=0, x_max=10, dx = 0.001,
+                       y_min=0, y_max=10, rate = 0.01):
+        self.rate = rate
+        plt.xlim(x_min, x_max)
+        plt.ylim(y_min)
         self.fig, self.ax = plt.subplots()
         self.line, = self.ax.plot([], [], lw=2)
+        self.data = ([], [])
 
-    def function(self, offset = 0):
-        """Calculates the y_array from x_array through
-        the function in question"""
-        lambd = 5*np.sin(2*np.pi*self.x_array)
-        return 3*np.pi*np.exp(-lambd*np.sin(0.01*offset + np.pi/2))
-
-    def plot_func(self, x_label = None, y_label = None):
-        """Animating the function"""
-        anim = FuncAnimation(self.fig, self.animate, init_func = self._init,
-                             frames=1000, interval=20, blit=True)
-
-        plt.xlim(self.x_lim)
-        plt.ylim(0,1500)
+    def plot_data(self):
+        """Plotting data"""
         plt.grid()
-        #plt.title("These curves though")
-        plt.show()
+        plt.title("These curves though")
 
-    def _init(self):
-        self.line.set_data([], [])
-        return self.line,
+    def update(self, data):
+        """Updates the data in the plot and the plot itself. useful for live
+        data tracking. """
+        self.data[0].append(data[0])
+        self.data[1].append(data[1])
+        self.line.set_data(self.data)
+        self.fig.canvas.draw()
+        self.fig.canvas.flush_events()
+        plt.plot(data[0], data[1])
+        plt.draw()
+        time.sleep(self.rate)
 
-    def animate(self, offset):
+    def animation(self, offset):
         self.line.set_data(self.x_array, self.function(offset))
         return self.line,
 
 def main():
-    plot = Plotter(0.5, 5)
-    plot.plot_func()
+    plt.ion()
+
+    plot = Plotter(0, 50, rate = 0.1)
+    plot.plot_data()
+    for i in range(20):
+        print(i, math.sin(i))
+        plot.update((i, math.sin(i)))
+
 
 if __name__ == '__main__':
     main()
